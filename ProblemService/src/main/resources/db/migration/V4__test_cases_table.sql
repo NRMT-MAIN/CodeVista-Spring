@@ -6,3 +6,4 @@ CREATE TABLE test_cases (
     problem_id BIGINT NOT NULL,
     CONSTRAINT fk_testcase_problem FOREIGN KEY (problem_id) REFERENCES problems(id)
 );
+
