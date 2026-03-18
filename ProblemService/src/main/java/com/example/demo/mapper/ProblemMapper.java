@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.dtos.CreateProblemRequestDTO;
 import com.example.demo.dtos.CreateProblemResponseDTO;
+import com.example.demo.dtos.FilterProblemResponse;
 import com.example.demo.dtos.TestCaseDTO;
 import com.example.demo.models.Problem;
 import com.example.demo.models.TestCase;
@@ -9,7 +10,7 @@ import com.example.demo.models.TestCase;
 import java.util.List;
 
 public class ProblemMapper {
-    public Problem mapToProblemEntity(CreateProblemRequestDTO dto) {
+    public static Problem mapToProblemEntity(CreateProblemRequestDTO dto) {
         return Problem.builder()
                 .slug(dto.getSlug())
                 .title(dto.getTitle())
@@ -20,7 +21,7 @@ public class ProblemMapper {
                 .build();
     }
 
-    public CreateProblemResponseDTO mapToProblemResponse(Problem entity) {
+    public static CreateProblemResponseDTO mapToProblemResponse(Problem entity) {
 
         List<TestCaseDTO> sampleTestCases =
                 entity.getTestCases().stream()
@@ -42,6 +43,15 @@ public class ProblemMapper {
                 .createdAt(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())
                 .testCases(sampleTestCases)
+                .build();
+    }
+
+    public static FilterProblemResponse toFilterProblemResponseDTO(Problem problem) {
+        return FilterProblemResponse.builder()
+                .id(problem.getId())
+                .slug(problem.getSlug())
+                .title(problem.getTitle())
+                .difficulty(problem.getDifficulty())
                 .build();
     }
 }
