@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.models.Difficulty;
 import com.example.demo.models.Problem;
 import org.hibernate.query.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,7 +24,7 @@ public interface ProblemRepository extends JpaRepository<Problem , Long> {
           AND (:tag IS NULL OR t.name = :tag)
     """)
     List<Problem> filterProblems(
-            @Param("difficulty") String difficulty,
+            @Param("difficulty") Difficulty difficulty,
             @Param("tag") String tag
     );
 }

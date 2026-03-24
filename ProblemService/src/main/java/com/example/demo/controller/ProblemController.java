@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dtos.CreateProblemRequestDTO;
 import com.example.demo.dtos.CreateProblemResponseDTO;
+import com.example.demo.models.Difficulty;
 import com.example.demo.service.IProblemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class ProblemController {
         return new ResponseEntity<>(responseDTO , HttpStatus.OK) ;
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<CreateProblemResponseDTO> updateProblem(@PathVariable Long id , @RequestBody CreateProblemRequestDTO dto) throws Exception {
         CreateProblemResponseDTO responseDTO = problemService.updateProblem(id, dto);
 
@@ -44,7 +45,7 @@ public class ProblemController {
     }
 
     @GetMapping("/filter/{difficulty}/{tags}")
-    public ResponseEntity<?> filterProblems(@PathVariable String difficulty , @PathVariable String tags) {
+    public ResponseEntity<?> filterProblems(@PathVariable Difficulty difficulty , @PathVariable String tags) {
         return new ResponseEntity<>(problemService.filterProblems(difficulty, tags), HttpStatus.OK) ;
     }
 }

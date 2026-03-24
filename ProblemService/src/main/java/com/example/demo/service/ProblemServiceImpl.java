@@ -4,6 +4,7 @@ import com.example.demo.dtos.CreateProblemRequestDTO;
 import com.example.demo.dtos.CreateProblemResponseDTO;
 import com.example.demo.dtos.FilterProblemResponse;
 import com.example.demo.mapper.ProblemMapper;
+import com.example.demo.models.Difficulty;
 import com.example.demo.models.Problem;
 import com.example.demo.repository.ProblemRepository;
 import com.example.demo.repository.ProblemTagRepository;
@@ -70,7 +71,7 @@ public class ProblemServiceImpl implements IProblemService{
     }
 
     @Override
-    public List<FilterProblemResponse> filterProblems(String difficulty , String tags) {
+    public List<FilterProblemResponse> filterProblems(Difficulty difficulty , String tags) {
         List<Problem> problems = problemRepo.filterProblems(difficulty , tags) ;
         log.info(problems.size() + "Problem filterd successfully!");
 

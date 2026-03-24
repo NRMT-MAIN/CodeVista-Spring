@@ -1,5 +1,5 @@
 CREATE TABLE test_cases (
-    id BIGINT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     input TEXT NOT NULL,
     expected_output TEXT NOT NULL,
     is_sample BOOLEAN DEFAULT FALSE,
