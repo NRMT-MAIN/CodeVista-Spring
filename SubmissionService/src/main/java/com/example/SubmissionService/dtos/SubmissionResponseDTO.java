@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class SubmissionResponseDTO {
     private Long id ;
+    private Long problemId ;
     private String status ;
     private Long runtime ;
     private Long memory ;
