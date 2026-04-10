@@ -43,7 +43,7 @@ public class CodeExecutor {
             }
 
             // Timeout protection
-            if (!run.waitFor(5, TimeUnit.SECONDS)) {
+            if (!run.waitFor(2, TimeUnit.SECONDS)) {
                 run.destroy();
                 return "TLE";
             }
