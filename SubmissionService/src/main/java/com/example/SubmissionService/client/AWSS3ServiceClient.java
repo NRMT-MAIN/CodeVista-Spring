@@ -1,5 +1,6 @@
 package com.example.SubmissionService.client;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AWSS3ServiceClient {
-    private final AmazonS3Client s3Client;
+    private final AmazonS3 s3Client ;
+
     @Value("${BUCKET_NAME}")
-    private final String bucketName ;
+    private String bucketName ;
 
     public String getFileContent(String key) {
         GetObjectRequest request = new GetObjectRequest(bucketName , key) ;
